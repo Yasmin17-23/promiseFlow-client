@@ -4,14 +4,26 @@ import SocialMedia from "../../components/SocialMedia/SocialMedia";
 import { useForm } from "react-hook-form";
 import registerImg from "../../assets/images/signup.jpg"
 import { toast } from "react-toastify";
+import useAuth from "../../Hooks/useAuth";
 
 const Register = () => {
+    const { createUser } = useAuth();
+   
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-      const onSubmit = (data) => {
-         console.log(data)
+      const onSubmit = async (data) => {
+        const { email, password } = data;
+         try{
+             const result = await createUser(email, password)
+             console.log(result.user);
+             toast.success("Register Successfully");
+         }
+        catch (err){
+            console.log(err);
+            toast.error(err?.message);
+        }
       }
-      
+    
     const passwordValidation = (value) => {
         if(value.length < 6){
             return toast.error('Password must be at least 6 characters or longer');
