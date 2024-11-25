@@ -2,20 +2,22 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddVolunteerPost = () => {
     const { user } = useAuth();
     const [startDate, setStartDate] = useState(new Date());
 
-    const handleAddVolunteer = e => {
+    const handleAddVolunteer = async e => {
         e.preventDefault();
         const form = e.target;
         const thumbnail = form.thumbnail.value;
         const postTitle = form.postTitle.value;
         const category = form.category.value;
         const location = form.location.value;
-        //const email = form.emial.value;
-       // const name = form.name.value;
+        const email = form.email.value;
+        const name = form.name.value;
         const no_of_Volunteers = form.no_of_Volunteers.value;
         const deadline = startDate;
         const description = form.description.value;
@@ -29,10 +31,19 @@ const AddVolunteerPost = () => {
             description,
             organizer: {
                 email,
-                name: user?.displayName,
+                name,
             },
         }
-        console.table(volunteerData);
+        try {
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_API_URL}/volunteer`, 
+                 volunteerData
+            )
+            console.log(data);
+            toast.success('Volunter Data Added Successfully');
+        } catch (err) {
+            console.log(err);
+        }
     }
     return (
         <div className="flex flex-col justify-center items-center text-center my-8">

@@ -9,7 +9,7 @@ const VolunteerNeed = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_API_URL}/volunteer`)
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/volunteers`)
             console.log(data)
             setVolunteers(data);
         }
