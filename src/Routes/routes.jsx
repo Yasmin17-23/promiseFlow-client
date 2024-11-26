@@ -7,6 +7,8 @@ import Register from "../pages/Register/Register";
 import AddVolunteerPost from "../pages/AddVounteerPost/AddVolunteerPost";
 import ManageMyPost from "../pages/ManageMyPost/ManageMyPost";
 import MyProfile from "../pages/MyProfile/MyProfile";
+import NeedVolunteerPost from "../pages/NeedVolunteerPost/NeedVolunteerPost";
+import BeVolunteer from "../pages/BeVolunteer/BeVolunteer";
 
 
 const router = createBrowserRouter([
@@ -41,8 +43,17 @@ const router = createBrowserRouter([
             {
                 path: '/manage-my-post',
                 element: <ManageMyPost></ManageMyPost>
+            },
+            {
+                path: '/volunteerDetails/:id',
+                element: <NeedVolunteerPost></NeedVolunteerPost>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/volunteers/${params.id}`)
+            },
+            {
+                path: '/beVolunteer/:id',
+                element: <BeVolunteer></BeVolunteer>,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/volunteers/${params.id}`)
             }
-           
             
         ]
     }

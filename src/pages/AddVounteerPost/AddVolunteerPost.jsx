@@ -104,7 +104,6 @@ const AddVolunteerPost = () => {
                        
                         {/* Date picker Input Field */}
                         <DatePicker  className="border px-4 py-2 text-end"
-                
                         selected={startDate} 
                         onChange={(date) => setStartDate(date)} />
                         

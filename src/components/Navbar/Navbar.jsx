@@ -41,13 +41,13 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2
+                        className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2
                             duration-1000 ${open ? 'top-16' : '-top-72'} shadow absolute`}>
                         {navItems}
                         <li>
                             <details>
                                 <summary className="bg-orange-200 hover:bg-orange-900 
-                              text-white hover:text-white">My Profile</summary>
+                              text-white hover:text-white z-10">My Profile</summary>
                                 <ul className={``}>
                                    {dropItems}
                                 </ul>
@@ -68,7 +68,7 @@ const Navbar = () => {
                         <details>
                             <summary className="bg-orange-200 hover:bg-orange-900 
                               text-white hover:text-white">My Profile</summary>
-                            <ul className={``}>
+                            <ul className="z-10">
                               {dropItems}
                             </ul>
                         </details>
