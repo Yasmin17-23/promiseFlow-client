@@ -7,26 +7,38 @@ import useAuth from "../../Hooks/useAuth";
 
 const BeVolunteer = () => {
     const { user } = useAuth();
-    const volunteer = useLoaderData();
+    const organizer = useLoaderData();
     const { _id, thumbnail, postTitle, category, deadline, description,
-        no_of_Volunteers, location, organizer } = volunteer;
+        no_of_Volunteers, location, organizerInfo } = organizer;
 
     const [startDate, setStartDate] = useState(new Date(deadline) || new Date());
    
-    //const handleRequest = async e => {
-      //  e.preventDefault();
-      //  const form = e.target;
-       // const thumbnail = form.thumbnail.value;
-       // const postTitle = form.postTitle.value;
-       // const category = form.category.value;
-       // const location = form.location.value;
-       // const email = form.email.value;
-      //  const name = form.name.value;
-       // const no_of_Volunteers = form.no_of_Volunteers.value;
-       // const deadline = startDate;
-       // const description = form.description.value;
+    const handleRequest = async e => {
+      e.preventDefault();
+      const form = e.target;
+      const volunteerId = _id;
+      const email = user?.email;
+      const name = user?.displayName;
+      const suggestion = form.suggestion.value;
+      const status = 'Requested';
+      const volunteerData = {
+         volunteerId,
+         email,
+         name,
+         suggestion,
+         status,
+         postTitle,
+         category,
+         deadline,
+         description,
+         no_of_Volunteers,
+         location,
+         organizer,
+
+      }
+    console.table(volunteerData);
        
-   // }
+   }
     return (
         <div className="flex flex-col justify-center items-center text-center my-8">
         <div className="py-5">
@@ -34,7 +46,7 @@ const BeVolunteer = () => {
             <p className="text-gray-600/50">I want to be a volunteer for this I request this
                 volunteer post part.</p>
         </div>
-        <form >
+        <form onSubmit={handleRequest}>
             <div className="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2">
                 <div className="flex flex-col">
                     <label className="text-gray-700 dark:text-gray-200" htmlFor="thumbnail">
@@ -127,7 +139,7 @@ const BeVolunteer = () => {
              focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                 </div>
             </div>
-            <div>
+            <div className="my-3">
                 <label className="text-gray-700 dark:text-gray-200" htmlFor="description">
                     Description
                 </label>
@@ -137,11 +149,21 @@ const BeVolunteer = () => {
              dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 
              focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
             </div>
+            <div className="my-3">
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="suggestion">
+                    Suggestion
+                </label>
+                <input id="suggestion" type="text" name="suggestion" 
+                    className="block w-full px-4 py-2 mt-2 
+            text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800
+             dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 
+             focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+            </div>
 
             <div className="flex justify-center mt-6">
                 <button className="px-8 py-2.5 leading-5 font-bold text-white transition-colors duration-300 
-        transform bg-orange-300 rounded-md hover:bg-orange-600 focus:outline-none
-         focus:bg-gray-600">ADD POST</button>
+        transform bg-orange-300 rounded-md hover:bg-orange-600 focus:outline-none uppercase
+         focus:bg-gray-600">Request</button>
             </div>
         </form>
     </div>

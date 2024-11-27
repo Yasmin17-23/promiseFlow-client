@@ -7,17 +7,21 @@ import { MdOutlineDateRange } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+
 
 
 const NeedVolunteerPost = () => {
     const [startDate, setStartDate] = useState(new Date());
-    const volunteer = useLoaderData();
+    const organizer = useLoaderData();
+    const { user } = useAuth();
+    console.log(organizer)
     const { _id, thumbnail, postTitle, category, deadline, description,
-        no_of_Volunteers, location, organizer } = volunteer;
+        no_of_Volunteers, location, organizerInfo } = organizer;
 
     return (
         <div className="my-10 text-center">
-            <h2 className="text-4xl font-abril text-orange-900">Need Volunteer Post Details</h2>
+            <h2 className="text-4xl font-abril text-orange-900 mb-5">Need Volunteer Post Details</h2>
 
             <div className="bg-white dark:bg-gray-900">
 
@@ -34,10 +38,10 @@ const NeedVolunteerPost = () => {
                                 <div className="flex flex-col items-start mr-2 text-gray-700 dark:text-gray-200">
                                    
                                    <p className='mt-2 text-md font-semibold  text-gray-600 '>
-                                        Organizer Name: {organizer?.name}
+                                        Organizer Name: {organizerInfo?.name}
                                     </p>
                                     <p className='mt-2 text-md font-semibold text-gray-600 '>
-                                        Organizer Email: {organizer?.email}
+                                        Organizer Email: {user?.email}
                                     </p>
                                 </div>
                                 <div className="flex items-center mr-2 text-gray-700 dark:text-gray-200">

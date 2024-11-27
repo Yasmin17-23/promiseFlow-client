@@ -21,7 +21,7 @@ const AddVolunteerPost = () => {
         const no_of_Volunteers = form.no_of_Volunteers.value;
         const deadline = startDate;
         const description = form.description.value;
-        const volunteerData = {
+        const organizerData = {
             thumbnail,
             postTitle,
             category,
@@ -29,15 +29,15 @@ const AddVolunteerPost = () => {
             no_of_Volunteers,
             deadline,
             description,
-            organizer: {
+            organizerinfo: {
                 email,
                 name,
             },
         }
         try {
             const { data } = await axios.post(
-                `${import.meta.env.VITE_API_URL}/volunteer`, 
-                 volunteerData
+                `${import.meta.env.VITE_API_URL}/organizer`, 
+                 organizerData
             )
             console.log(data);
             toast.success('Volunter Data Added Successfully');

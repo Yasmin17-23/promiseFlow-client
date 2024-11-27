@@ -47,12 +47,12 @@ const router = createBrowserRouter([
             {
                 path: '/volunteerDetails/:id',
                 element: <NeedVolunteerPost></NeedVolunteerPost>,
-                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/volunteers/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/organizers/${params.id}`)
             },
             {
                 path: '/beVolunteer/:id',
                 element: <BeVolunteer></BeVolunteer>,
-                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/volunteers/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/organizers/${params.id}`)
             }
             
         ]

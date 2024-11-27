@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 
-const VolunteerCard = ({ volunteer }) => { 
-    const { _id, thumbnail, postTitle, category,  deadline } = volunteer;
+const VolunteerCard = ({ oraganizer }) => { 
+    const { _id, thumbnail, postTitle, category,  deadline } = oraganizer;
 
     return (
         <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 my-8">

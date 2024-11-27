@@ -42,7 +42,7 @@ const banner = () => {
         <SwiperSlide>
           <Slider
             image={img2}
-            text='Please Hepl Our Charities'>
+            text='Please Help Our Charities'>
           </Slider>
         </SwiperSlide>
         <SwiperSlide>
