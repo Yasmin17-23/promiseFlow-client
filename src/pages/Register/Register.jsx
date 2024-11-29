@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialMedia from "../../components/SocialMedia/SocialMedia";
 import { useForm } from "react-hook-form";
 import registerImg from "../../assets/images/signup.jpg"
@@ -8,6 +8,8 @@ import useAuth from "../../Hooks/useAuth";
 
 const Register = () => {
     const { createUser } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
    
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -17,6 +19,7 @@ const Register = () => {
              const result = await createUser(email, password)
              console.log(result.user);
              toast.success("Register Successfully");
+             navigate(location?.state ? location.state : '/');
          }
         catch (err){
             console.log(err);

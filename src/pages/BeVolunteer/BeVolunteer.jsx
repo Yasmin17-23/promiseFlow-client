@@ -3,6 +3,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 
 const BeVolunteer = () => {
@@ -27,16 +29,20 @@ const BeVolunteer = () => {
          name,
          suggestion,
          status,
-         postTitle,
-         category,
-         deadline,
-         description,
-         no_of_Volunteers,
-         location,
          organizer,
 
       }
-    console.table(volunteerData);
+       try{
+          const { data } = await axios.post(
+            `${import.meta.env.VITE_API_URL}/volunteer`,
+              volunteerData
+            )
+          console.log(data);
+          toast.success('Volunteer Requested Successfully');
+       }
+       catch (err){
+         console.log(err);
+       }
        
    }
     return (

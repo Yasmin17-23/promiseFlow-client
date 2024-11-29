@@ -1,12 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import login from "../../assets/images/login.jpg";
 import SocialMedia from "../../components/SocialMedia/SocialMedia";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 const Login = () => {
-    const { signInUser } = useAuth();
+    const { signInUser, user, loading } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        if(user){
+            navigate('/');
+        }
+    }, []);
    
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -16,12 +25,14 @@ const Login = () => {
              const result = await signInUser(email, password)
              console.log(result.user);
              toast.success("Login Successfully");
+             navigate(location?.state ? location.state : '/' );
          }
         catch (err){
             console.log(err);
             toast.error(err?.message);
         }
       }
+      
     return (
         <div className="hero min-h-screen">
              

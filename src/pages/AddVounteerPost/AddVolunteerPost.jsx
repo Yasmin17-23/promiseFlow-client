@@ -17,7 +17,6 @@ const AddVolunteerPost = () => {
         const category = form.category.value;
         const location = form.location.value;
         const email = form.email.value;
-        const name = form.name.value;
         const no_of_Volunteers = form.no_of_Volunteers.value;
         const deadline = startDate;
         const description = form.description.value;
@@ -29,9 +28,9 @@ const AddVolunteerPost = () => {
             no_of_Volunteers,
             deadline,
             description,
-            organizerinfo: {
+            owner: {
                 email,
-                name,
+                name: user?.displayName,
             },
         }
         try {
@@ -41,9 +40,12 @@ const AddVolunteerPost = () => {
             )
             console.log(data);
             toast.success('Volunter Data Added Successfully');
+          
         } catch (err) {
             console.log(err);
+            
         }
+        e.target.reset();
     }
     return (
         <div className="flex flex-col justify-center items-center text-center my-8">

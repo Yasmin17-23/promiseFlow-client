@@ -15,7 +15,9 @@ const VolunteerCard = ({ oraganizer }) => {
                 src={thumbnail} alt="NIKE AIR" />
 
             <div className="flex flex-col items-center justify-center px-4 py-2 bg-gray-900">
-                <h1 className="text-md font-bold text-white mb-3">Deadline: {deadline}</h1>
+                <h1 className="text-md font-bold text-white mb-3 pr-2">Deadline: 
+                     {new Date(deadline).toLocaleDateString()}
+                </h1>
                <Link to={`/volunteerDetails/${_id}`}>
                <button className="px-4 py-2 text-sm font-semibold text-gray-900 
                 uppercase transition-colors duration-300 transform bg-orange-200 rounded

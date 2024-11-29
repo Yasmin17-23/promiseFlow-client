@@ -17,7 +17,7 @@ const NeedVolunteerPost = () => {
     const { user } = useAuth();
     console.log(organizer)
     const { _id, thumbnail, postTitle, category, deadline, description,
-        no_of_Volunteers, location, organizerInfo } = organizer;
+        no_of_Volunteers, location, owner } = organizer;
 
     return (
         <div className="my-10 text-center">
@@ -38,7 +38,7 @@ const NeedVolunteerPost = () => {
                                 <div className="flex flex-col items-start mr-2 text-gray-700 dark:text-gray-200">
                                    
                                    <p className='mt-2 text-md font-semibold  text-gray-600 '>
-                                        Organizer Name: {organizerInfo?.name}
+                                        Organizer Name: {user?.displayName}
                                     </p>
                                     <p className='mt-2 text-md font-semibold text-gray-600 '>
                                         Organizer Email: {user?.email}
