@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const ManageMyPost = () => {
     const { user } = useAuth();
@@ -17,7 +18,45 @@ const ManageMyPost = () => {
         setOrganizers(data);
     }
 
-    console.log(organizers);
+    const handleDeletePost = async id => {
+        console.log(id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then(async (result) => {
+              if (result.isConfirmed) {
+                try {
+                    const { data } = await axios.delete(
+                        `${import.meta.env.VITE_API_URL}/organizer/${id}`
+                    )
+                    Swal.fire({
+                        title: "Deleted!",
+                         text: "Your file has been deleted.",
+                         icon: "success"
+                        });
+                    
+                    //Refresh data after a successfully deleted data
+                    getData()
+                }
+                catch (err) {
+                    console.log(err);
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Do you want to continue',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                      })
+                }
+             
+           }
+          });
+    }
+
     return (
         <div className="py-8 text-center">
             <h2 className="text-4xl font-abril text-gray-600 mb-6">Here Manage My All Volunteer Need Post</h2>
@@ -58,7 +97,7 @@ const ManageMyPost = () => {
                                                     organizers.map(organizer => (
                                                         <tr key={organizer._id}>
                                                             <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                                <div class="inline-flex items-center gap-x-3">
+                                                                <div className="inline-flex items-center gap-x-3">
                                                                     <div className="flex items-center  gap-x-2">
                                                                         <img className="object-cover w-10 h-10 
                                                             rounded-full"
@@ -108,7 +147,9 @@ const ManageMyPost = () => {
                                                             </td>
                                                             <td className="px-4 py-4 text-sm whitespace-nowrap">
                                                                 <div className="flex items-center gap-x-6">
-                                                                    <button className="text-gray-500 
+                                                                    <button onClick={() => 
+                                                                    handleDeletePost(organizer._id)}
+                                                                    className="text-gray-500 
                                                                     transition-colors duration-200
                                                                      dark:hover:text-red-500
                                                                       dark:text-gray-300 hover:text-red-500 focus:outline-none">
@@ -127,7 +168,7 @@ const ManageMyPost = () => {
                                                                     </button>
 
                                                                     <Link to={`/updatePost/${organizer._id}`}
-                                                                    className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+                                                                        className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
                                                                         <svg
                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                             fill="none"
