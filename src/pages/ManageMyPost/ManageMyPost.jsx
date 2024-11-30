@@ -3,20 +3,27 @@ import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
+import VolunteerRequest from "../VolunteerRequest/VolunteerRequest";
 
 const ManageMyPost = () => {
     const { user } = useAuth();
     const [organizers, setOrganizers] = useState([]);
+    
 
     useEffect(() => {
         getData()
     }, [user])
 
+    
     const getData = async () => {
         const { data } = await axios(`${import.meta.env.VITE_API_URL}/organizers/${user?.email}`)
         console.log(data);
         setOrganizers(data);
     }
+
+   
+
+   
 
     const handleDeletePost = async id => {
         console.log(id);
@@ -197,7 +204,11 @@ const ManageMyPost = () => {
                         </div>
                     )
             }
+          <div className="py-8">
+             <VolunteerRequest></VolunteerRequest>
+          </div>
         </div>
+       
     );
 };
 

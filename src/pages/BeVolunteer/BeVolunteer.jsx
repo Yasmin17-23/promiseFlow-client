@@ -11,7 +11,7 @@ const BeVolunteer = () => {
     const { user } = useAuth();
     const organizer = useLoaderData();
     const { _id, thumbnail, postTitle, category, deadline, description,
-        no_of_Volunteers, location, organizerInfo } = organizer;
+        no_of_Volunteers, location, owner } = organizer;
 
     const [startDate, setStartDate] = useState(new Date(deadline) || new Date());
    
@@ -20,7 +20,7 @@ const BeVolunteer = () => {
       const form = e.target;
       const volunteerId = _id;
       const email = user?.email;
-      const name = user?.displayName;
+      const name = form.name.value;
       const suggestion = form.suggestion.value;
       const status = 'Requested';
       const volunteerData = {
@@ -29,7 +29,14 @@ const BeVolunteer = () => {
          name,
          suggestion,
          status,
-         organizer,
+         thumbnail, 
+         postTitle, 
+         category, 
+         deadline, 
+         description,
+        no_of_Volunteers, 
+        location, 
+        owner
 
       }
        try{
