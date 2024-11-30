@@ -11,12 +11,14 @@ import NeedVolunteerPost from "../pages/NeedVolunteerPost/NeedVolunteerPost";
 import BeVolunteer from "../pages/BeVolunteer/BeVolunteer";
 import PrivateRoute from "./PrivateRoute";
 import UpdatePost from "../pages/UpdatePost/UpdatePost";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 index: true,
