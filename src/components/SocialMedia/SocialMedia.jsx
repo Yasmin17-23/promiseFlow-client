@@ -2,17 +2,28 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const SocialMedia = () => {
     const { googleLogin, githubLogin } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSocialLogin = async socialLogin => {
         
         try{
             const result = await socialLogin()
             console.log(result.user);
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {
+                email: result?.user?.email,
+            }, {
+                withCredentials : true,
+            })
+            console.log(data)
             toast.success('Login Successfully');
+            navigate(location?.state ? location.state : '/');
         }
         catch (err) {
             console.log(err);

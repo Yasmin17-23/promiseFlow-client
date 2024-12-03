@@ -8,6 +8,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 
 
@@ -21,8 +22,8 @@ const NeedVolunteerPost = () => {
 
     return (
         <div className="my-10 text-center">
+            <PageTitle title="Need Volunteer Post"></PageTitle>
             <h2 className="text-4xl font-abril text-orange-900 mb-5">Need Volunteer Post Details</h2>
-
             <div className="bg-white dark:bg-gray-900">
 
 

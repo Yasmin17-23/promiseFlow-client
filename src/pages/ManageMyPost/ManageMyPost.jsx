@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 import VolunteerRequest from "../VolunteerRequest/VolunteerRequest";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 const ManageMyPost = () => {
     const { user } = useAuth();
@@ -66,6 +67,7 @@ const ManageMyPost = () => {
 
     return (
         <div className="py-8 text-center">
+            <PageTitle title="Manage My Post"></PageTitle>
             <h2 className="text-4xl font-abril text-gray-600 mb-6">Here Manage My All Volunteer Need Post</h2>
             {
                 organizers.length === 0 ? (

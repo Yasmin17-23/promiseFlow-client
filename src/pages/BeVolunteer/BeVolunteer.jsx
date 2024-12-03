@@ -5,6 +5,7 @@ import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { toast } from "react-toastify";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 
 const BeVolunteer = () => {
@@ -54,6 +55,7 @@ const BeVolunteer = () => {
    }
     return (
         <div className="flex flex-col justify-center items-center text-center my-8">
+        <PageTitle title="Be Volunteer Page"></PageTitle>
         <div className="py-5">
             <h2 className="text-4xl font-abril text-gray-600 mb-3">Be A Volunteer Post</h2>
             <p className="text-gray-600/50">I want to be a volunteer for this I request this

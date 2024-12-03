@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import registerImg from "../../assets/images/signup.jpg"
 import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
+import PageTitle from "../../components/PageTitle/PageTitle";
+import axios from "axios";
 
 const Register = () => {
     const { createUser } = useAuth();
@@ -18,6 +20,12 @@ const Register = () => {
          try{
              const result = await createUser(email, password)
              console.log(result.user);
+             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {
+                email: result?.user?.email,
+             }, {
+                withCredentials: true,
+             })
+             console.log(data);
              toast.success("Register Successfully");
              navigate(location?.state ? location.state : '/');
          }
@@ -40,7 +48,8 @@ const Register = () => {
         return true;
     }
     return (
-        <div className="hero min-h-screen my-10">    
+        <div className="hero min-h-screen my-10">   
+        <PageTitle title="Register Page"></PageTitle> 
         <div className="hero-content flex-col lg:flex-row-reverse ">
             <div className="text-center ">
                 <img src={registerImg} alt="" />

@@ -5,6 +5,8 @@ import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import PageTitle from "../../components/PageTitle/PageTitle";
+import axios from "axios";
 
 const Login = () => {
     const { signInUser, user, loading } = useAuth();
@@ -24,6 +26,13 @@ const Login = () => {
          try{
              const result = await signInUser(email, password)
              console.log(result.user);
+             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {
+                eamil: result?.user?.email,
+             },
+            {
+                withCredentials: true,
+            })
+             console.log(data);
              toast.success("Login Successfully");
              navigate(location?.state ? location.state : '/' );
          }
@@ -35,7 +44,7 @@ const Login = () => {
       
     return (
         <div className="hero min-h-screen">
-             
+             <PageTitle title="Login Page"></PageTitle>
             <div className="hero-content flex-col lg:flex-row-reverse ">
                 <div className="text-center lg:text-left">
                     <img src={login} alt="" />

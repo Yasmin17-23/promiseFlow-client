@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { toast } from "react-toastify";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 const AddVolunteerPost = () => {
     const { user } = useAuth();
@@ -36,7 +37,7 @@ const AddVolunteerPost = () => {
         try {
             const { data } = await axios.post(
                 `${import.meta.env.VITE_API_URL}/organizer`, 
-                 organizerData
+                 organizerData   
             )
             console.log(data);
             toast.success('Volunter Data Added Successfully');
@@ -49,6 +50,7 @@ const AddVolunteerPost = () => {
     }
     return (
         <div className="flex flex-col justify-center items-center text-center my-8">
+            <PageTitle title="Add Volunteer Post Page"></PageTitle>
             <div className="py-5">
                 <h2 className="text-4xl font-abril text-gray-600 mb-3">Add Your Volunteer Post</h2>
                 <p className="text-gray-600/50">We need best volunteer for this we created add

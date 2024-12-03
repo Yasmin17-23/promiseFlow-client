@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import app from "../firebase/firebase.config"
+import app from "../firebase/firebase.config";
+import axios from "axios";
 
 const auth = getAuth(app);
 export const AuthContext = createContext(null);
@@ -32,9 +33,13 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, githubProvider);
     }
 
-    const logOut = () => {
+    const logOut = async () => {
         setUser(null);
         setLoading(true);
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/logout`, {
+            withCredentials: true,
+        });
+        console.log(data);
         return signOut(auth);
     }
     useEffect(() => {

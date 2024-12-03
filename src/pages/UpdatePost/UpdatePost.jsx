@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useLoaderData } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
 
 const UpdatePost = () => {
@@ -56,6 +57,7 @@ const UpdatePost = () => {
 
     return (
         <div className="flex flex-col justify-center items-center text-center my-8">
+            <PageTitle title="Update Volunteer Post"></PageTitle>
             <div className="py-5">
                 <h2 className="text-4xl font-abril text-gray-600 mb-3">Update Your Volunteer Post</h2>
                 <p className="text-gray-600/50">We need best volunteer for this we want to update
