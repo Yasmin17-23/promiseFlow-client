@@ -94,11 +94,7 @@ const ManageMyPost = () => {
                                 rtl:text-right text-gray-500 dark:text-gray-400">No Of Volunteers</th>
                                                     <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left 
                                 rtl:text-right text-gray-500 dark:text-gray-400">Description</th>
-                                                    <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left 
-                                rtl:text-right text-gray-500 dark:text-gray-400">Edit</th>
-
-
-
+                                                   
                                                 </tr>
                                             </thead>
                                             <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">

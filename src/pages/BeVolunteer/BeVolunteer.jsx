@@ -50,6 +50,7 @@ const BeVolunteer = () => {
        }
        catch (err){
          console.log(err);
+         toast.success(err.response.data);
        }
        
    }

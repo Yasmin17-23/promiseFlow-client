@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import errorImg from "../../assets/images/errorImg.jpg";
+import PageTitle from "../ErrorPage/ErrorPage";
 
 const ErrorPage = () => {
     return (

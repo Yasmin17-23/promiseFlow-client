@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const VolunteerCard = ({ oraganizer }) => { 
-    const { _id, thumbnail, postTitle, category,  deadline } = oraganizer;
+    const { _id, thumbnail, postTitle, category,  deadline, no_of_Volunteers } = oraganizer;
 
     return (
         <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 my-8">
@@ -18,6 +18,8 @@ const VolunteerCard = ({ oraganizer }) => {
                 <h1 className="text-md font-bold text-white mb-3 pr-2">Deadline: 
                      {new Date(deadline).toLocaleDateString()}
                 </h1>
+                <p className="text-md font-bold text-white mb-3 mr-2">No Of Volunteer Need: 
+                    <span className="pl-2"> {no_of_Volunteers}</span></p>
                <Link to={`/volunteerDetails/${_id}`}>
                <button className="px-4 py-2 text-sm font-semibold text-gray-900 
                 uppercase transition-colors duration-300 transform bg-orange-200 rounded
