@@ -5,7 +5,7 @@ const VolunteerCard = ({ oraganizer }) => {
     const { _id, thumbnail, postTitle, category,  deadline, no_of_Volunteers } = oraganizer;
 
     return (
-        <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 my-8">
+        <div className="md:max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 my-8">
             <div className="px-4 py-2">
                 <h1 className="text-xl font-bold text-red-800/70 uppercase dark:text-white">{category}</h1>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{postTitle}</p>

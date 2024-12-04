@@ -22,9 +22,6 @@ const ManageMyPost = () => {
         setOrganizers(data);
     }
 
-   
-
-   
 
     const handleDeletePost = async id => {
         console.log(id);
@@ -68,10 +65,10 @@ const ManageMyPost = () => {
     return (
         <div className="py-8 text-center">
             <PageTitle title="Manage My Post"></PageTitle>
-            <h2 className="text-4xl font-abril text-gray-600 mb-6">Here Manage My All Volunteer Need Post</h2>
+            <h2 className="text-2xl md:text-4xl font-abril text-gray-600 mb-6">Here Manage My All Volunteer Need Post</h2>
             {
                 organizers.length === 0 ? (
-                    <p className="text-2xl font-abril text-orange-600 mb-6">No post found</p>
+                    <p className="text-xl md:text-2xl font-abril text-orange-600 mb-6">No post found</p>
                 ) :
                     (
                         <div className="flex flex-col mt-6">

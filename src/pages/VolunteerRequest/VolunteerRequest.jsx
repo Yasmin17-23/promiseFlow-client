@@ -61,10 +61,10 @@ const VolunteerRequest = () => {
     }
     return (
         <div className="py-8 text-center">
-        <h2 className="text-4xl font-abril text-gray-600 mb-6">Here  My All Volunteer Request Post</h2>
+        <h2 className="text-2xl md:text-4xl font-abril text-gray-600 mb-6">Here  My All Volunteer Request Post</h2>
         {
             volunteers.length === 0 ? (
-                <p className="text-2xl font-abril text-orange-600 mb-6">No Volunteer Request post found</p>
+                <p className="text-xl md:text-2xl font-abril text-orange-600 mb-6">No Volunteer Request post found</p>
             ) :
                 (
                     <div className="flex flex-col mt-6">

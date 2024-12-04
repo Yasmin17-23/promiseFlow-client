@@ -64,7 +64,7 @@ const Navbar = () => {
                             <details>
                                 <summary className="bg-orange-200 hover:bg-orange-900 
                               text-white hover:text-white z-10">My Profile</summary>
-                                <ul className={``}>
+                                <ul className={`mt-5`}>
                                     {dropItems}
                                 </ul>
                             </details>
